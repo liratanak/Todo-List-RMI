@@ -1,13 +1,13 @@
 package main;
 
+import item.TodoItem;
+
 public class MainTodoListClient {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		TodoItem todoItem = new TodoItem();
+		todoItem.setObject("Object");
+		System.out.println(todoItem.getObject());
 	}
 
 }
