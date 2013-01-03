@@ -9,6 +9,7 @@ public class TodoItem {
 	private int priority;
 	private Date lastUpdate;
 	private Date deadline;
+	private String title;
 	private String object;
 
 	public TodoItem() {
@@ -66,6 +67,14 @@ public class TodoItem {
 
 	public static void main(String[] args) {
 
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }
