@@ -3,13 +3,18 @@ package mapper;
 import item.TodoItem;
 
 import java.util.List;
+import java.util.Vector;
 
-public class TodoItemMapper implements TodoItemMapperInterface {
+public class MockTodoItemMapper implements TodoItemMapperInterface {
 
 	@Override
 	public List<TodoItem> findAll() {
 		
-		return null;
+		List<TodoItem> listTodoItems = new Vector<TodoItem>();
+		
+		listTodoItems.add(new TodoItem());
+		
+		return listTodoItems;
 	}
 
 	@Override
