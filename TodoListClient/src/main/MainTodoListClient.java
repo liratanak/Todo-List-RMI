@@ -8,6 +8,7 @@ public class MainTodoListClient {
 		TodoItem todoItem = new TodoItem();
 		todoItem.setObject("Object");
 		System.out.println(todoItem.getObject());
+		System.out.println("sdfshfweftwtwy");
 	}
 
 }

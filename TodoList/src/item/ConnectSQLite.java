@@ -23,7 +23,7 @@ public class ConnectSQLite {
 		}  
         try {
 			con = DriverManager.
-					getConnection("jdbc:sqlite:/C:/Users/MacBookPro/Desktop/workspace/Todo-List-RMI/TodoList/database.db");
+					getConnection("jdbc:sqlite://C:/Users/macbookpro/Desktop/workspace/Todo-List-RMI/TodoList/database.db");
 			statement = con.createStatement();
         } catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -90,15 +90,12 @@ public class ConnectSQLite {
 	         }  
 	     }  
 	}
-	  
-
-	
-	public static void main(String[] args) 
-	  { 
-	      ConnectSQLite cs = new ConnectSQLite();
+	public static void main(String[] args){
+		ConnectSQLite cs = new ConnectSQLite();
 	      cs.connect();
-//	      cs.insert();
+	      cs.insert();
 //	      cs.update("buy flowers",2);
 	      cs.selectAll();  
-	  }
+	}
+	
 }
