@@ -2,7 +2,9 @@ package item;
 
 import java.util.Date;
 
-public class TodoItem {
+import pkinterface.TodoItemInterface;
+
+public class TodoItem implements TodoItemInterface {
 
 	private int id;
 	private int version;
@@ -74,10 +76,6 @@ public class TodoItem {
 		this.object = object;
 	}
 
-	public static void main(String[] args) {
-
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -85,5 +83,5 @@ public class TodoItem {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
 }

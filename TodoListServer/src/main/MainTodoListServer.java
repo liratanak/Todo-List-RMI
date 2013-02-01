@@ -5,8 +5,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+import pkinterface.TodoListServerInterface;
+
 import server.TodoListServer;
-import server.TodoListServerInterface;
 
 public class MainTodoListServer {
 
