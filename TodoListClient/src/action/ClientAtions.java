@@ -2,5 +2,5 @@ package action;
 
 public interface ClientAtions {
 	public boolean updateAllItem();
-	public boolean updateItem();
+	public boolean updateItem(int id);
 }

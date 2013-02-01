@@ -17,6 +17,15 @@ public class TodoItem {
 		this.lastUpdate = new Date();
 	}
 
+	public TodoItem(int id, int version, int priority, String title, String object) {
+		this();
+		this.id = id;
+		this.version = version;
+		this.priority = priority;
+		this.title = title;
+		this.object = object;
+	}
+
 	public int getId() {
 		return id;
 	}
