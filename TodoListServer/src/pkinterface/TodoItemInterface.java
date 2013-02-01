@@ -1,8 +1,9 @@
 package pkinterface;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public interface TodoItemInterface {
+public interface TodoItemInterface extends Serializable {
 	public int getId();
 	public void setId(int id);
 	

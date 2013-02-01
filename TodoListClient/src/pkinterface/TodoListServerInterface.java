@@ -5,8 +5,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import item.TodoItem;
-
 public interface TodoListServerInterface extends Remote {
 	
 	public TodoItemInterface getTodo(int id) throws RemoteException;

@@ -1,7 +1,5 @@
 package server;
 
-import item.TodoItem;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
@@ -11,12 +9,25 @@ import pkinterface.TodoListServerInterface;
 
 
 public class TodoListServer implements TodoListServerInterface{
-	List<TodoItem> todoList;
+	List<TodoItemInterface> todoList;
 	List<UnicastRemoteObject> clientList;
+	
+	public List<TodoItemInterface> getTodoList() {
+		return todoList;
+	}
+	public void setTodoList(List<TodoItemInterface> todoList) {
+		this.todoList = todoList;
+	}
+	public List<UnicastRemoteObject> getClientList() {
+		return clientList;
+	}
+	public void setClientList(List<UnicastRemoteObject> clientList) {
+		this.clientList = clientList;
+	}
+	
 	@Override
 	public TodoItemInterface getTodo(int id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.todoList.get(id);
 	}
 	@Override
 	public List<TodoItemInterface> getList(UnicastRemoteObject source) throws RemoteException {
