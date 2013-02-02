@@ -16,6 +16,7 @@ public class SaveItemButton extends JButton implements ActionListener {
 	
 	public SaveItemButton(String title, TodoItemPanel todoItemPanel) {
 		super(title);
+		this.setEnabled(false);
 		this.todoItemPanel = todoItemPanel;
 		this.addActionListener(this);
 	}
@@ -26,6 +27,10 @@ public class SaveItemButton extends JButton implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			MainTodoListClient.serverObject.updateTodo(this.todoItemPanel.getTodoItem(), MainTodoListClient.client);
+			this.setEnabled(false);
+			this.todoItemPanel.getEditButton().setText("Edit");
+			((EditItemButton)this.todoItemPanel.getEditButton()).setBeingEdited(false);
+			this.todoItemPanel.getObjectTextArea().setEditable(false);
 		} catch (RemoteException re) {
 			re.printStackTrace();
 		}

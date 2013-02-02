@@ -88,6 +88,22 @@ public class TodoItemPanel extends JPanel {
 	public void setTodoItem(TodoItemInterface todoItem) {
 		this.todoItem = todoItem;
 	}
+
+	public JButton getEditButton() {
+		return editButton;
+	}
+
+	public void setEditButton(JButton editButton) {
+		this.editButton = editButton;
+	}
+
+	public JButton getSaveButton() {
+		return saveButton;
+	}
+
+	public void setSaveButton(JButton saveButton) {
+		this.saveButton = saveButton;
+	}
 	
 	
 }

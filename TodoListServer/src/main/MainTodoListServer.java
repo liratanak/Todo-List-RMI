@@ -32,7 +32,6 @@ public class MainTodoListServer {
 			Registry registry = LocateRegistry.getRegistry();
 			registry.rebind(name, stub);
 			
-			System.out.println(server.getTodo(0).getClass());
 			System.out.println("Todo List Server Started!");
 
 		} catch (RemoteException e) {
