@@ -1,0 +1,1 @@
+**L'objectif de ce projet est de développer, en RMI, un système de gestion de "Todo list" distribuée**
