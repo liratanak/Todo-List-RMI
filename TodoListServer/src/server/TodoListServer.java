@@ -4,13 +4,14 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
+import pkinterface.IClient;
 import pkinterface.TodoItemInterface;
 import pkinterface.TodoListServerInterface;
 
 
 public class TodoListServer implements TodoListServerInterface{
 	List<TodoItemInterface> todoList;
-	List<UnicastRemoteObject> clientList;
+	List<IClient> clientList;
 	
 	public List<TodoItemInterface> getTodoList() {
 		return todoList;
@@ -18,10 +19,10 @@ public class TodoListServer implements TodoListServerInterface{
 	public void setTodoList(List<TodoItemInterface> todoList) {
 		this.todoList = todoList;
 	}
-	public List<UnicastRemoteObject> getClientList() {
+	public List<IClient> getClientList() {
 		return clientList;
 	}
-	public void setClientList(List<UnicastRemoteObject> clientList) {
+	public void setClientList(List<IClient> clientList) {
 		this.clientList = clientList;
 	}
 	
@@ -30,22 +31,24 @@ public class TodoListServer implements TodoListServerInterface{
 		return this.todoList.get(id);
 	}
 	@Override
-	public List<TodoItemInterface> getList(UnicastRemoteObject source) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TodoItemInterface> getList(IClient source) throws RemoteException {
+		for (IClient client : clientList) {
+			
+		}
+		return this.todoList;
 	}
 	@Override
-	public void disconnect(UnicastRemoteObject source) throws RemoteException {
+	public void disconnect(IClient source) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public int updateTodo(TodoItemInterface item, UnicastRemoteObject source) throws RemoteException {
+	public int updateTodo(TodoItemInterface item, IClient source) throws RemoteException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	@Override
-	public boolean deleteTodo(TodoItemInterface ti, UnicastRemoteObject source) throws RemoteException {
+	public boolean deleteTodo(TodoItemInterface ti, IClient source) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -7,6 +7,7 @@ import pkinterface.TodoItemInterface;
 
 public class TodoItem implements TodoItemInterface, Serializable {
 
+	private static final long serialVersionUID = -904610452057568797L;
 	private int id;
 	private int version;
 	private int priority;
