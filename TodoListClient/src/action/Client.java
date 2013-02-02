@@ -1,5 +1,8 @@
 package action;
 
+import gui.frame.TodoListMainFrame;
+
+import java.awt.Color;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -28,8 +31,7 @@ public class Client extends UnicastRemoteObject implements IClient, ClientAtions
 
 	@Override
 	public void notifyClient() throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		TodoListMainFrame.refreshButton.setForeground(Color.BLUE);
 	}
 
 }

@@ -56,7 +56,12 @@ public class TodoListServer implements TodoListServerInterface {
 
 	@Override
 	public int updateTodo(TodoItemInterface item, IClient source) throws RemoteException {
-
+		
+		for (IClient client : clientList) {
+			if(!source.equals(client)){
+				client.notifyClient();
+			}
+		}
 		return 0;
 	}
 

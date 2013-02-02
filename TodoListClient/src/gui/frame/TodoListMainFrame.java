@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -20,6 +21,7 @@ public class TodoListMainFrame extends JFrame {
 	private static final long serialVersionUID = 8789537747564876190L;
 	private Dimension frameSize = new Dimension(720, 640);
 	private JPanel mainPanel;
+	public static JButton refreshButton;
 
 	public TodoListMainFrame(String title, List<TodoItemInterface> listTodoItems) {
 		super(title);
@@ -35,6 +37,9 @@ public class TodoListMainFrame extends JFrame {
 		this.mainPanel = new TodoListMainPanel(listTodoItemPanel) ;
 		
 		this.add(mainPanel, BorderLayout.CENTER);
+		
+		TodoListMainFrame.refreshButton = new JButton("Refresh");
+		this.add(TodoListMainFrame.refreshButton, BorderLayout.SOUTH);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(frameSize);

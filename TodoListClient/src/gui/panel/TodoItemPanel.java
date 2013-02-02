@@ -80,6 +80,14 @@ public class TodoItemPanel extends JPanel {
 	public void setObjectTextArea(JTextArea objectTextArea) {
 		this.objectTextArea = objectTextArea;
 	}
+
+	public TodoItemInterface getTodoItem() {
+		return todoItem;
+	}
+
+	public void setTodoItem(TodoItemInterface todoItem) {
+		this.todoItem = todoItem;
+	}
 	
 	
 }

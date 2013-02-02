@@ -19,20 +19,22 @@ import pkinterface.TodoListServerInterface;
 public class MainTodoListClient {
 	
 	public static List<TodoItemInterface> listTodoItems;
+	public static TodoListServerInterface serverObject;
+	public static IClient client;
 
 	public static void main(String[] args) {
 		try {
-			IClient client = new Client();
+			MainTodoListClient.client = new Client();
 //			System.setSecurityManager(new SecurityManager());
 
 			String name = "TodoListServer";
 			Registry registry = LocateRegistry.getRegistry("localhost");
-			TodoListServerInterface serverObject = (TodoListServerInterface) registry.lookup(name);
+			MainTodoListClient.serverObject = (TodoListServerInterface) registry.lookup(name);
 
-			listTodoItems = serverObject.getList(client);
-			
+			MainTodoListClient.listTodoItems = MainTodoListClient.serverObject.getList(MainTodoListClient.client);
 			iniClientGui();
 
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
