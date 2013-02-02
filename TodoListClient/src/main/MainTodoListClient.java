@@ -1,15 +1,24 @@
 package main;
 
+import gui.frame.TodoListMainFrame;
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+
 import action.Client;
 
 import pkinterface.IClient;
+import pkinterface.TodoItemInterface;
 import pkinterface.TodoListServerInterface;
 
 public class MainTodoListClient {
+	
+	public static List<TodoItemInterface> listTodoItems;
 
 	public static void main(String[] args) {
 		try {
@@ -20,12 +29,41 @@ public class MainTodoListClient {
 			Registry registry = LocateRegistry.getRegistry("localhost");
 			TodoListServerInterface serverObject = (TodoListServerInterface) registry.lookup(name);
 
-			System.out.println(serverObject.getList(client));
+			listTodoItems = serverObject.getList(client);
+			
+			iniClientGui();
 
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static void iniClientGui() {
+		try {
+			//set look and fell 
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(main.MainTodoListClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(main.MainTodoListClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(main.MainTodoListClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(main.MainTodoListClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+		
+		SwingUtilities.invokeLater(new Runnable() {	
+			@Override
+			public void run() {
+				new TodoListMainFrame("Todo List", MainTodoListClient.listTodoItems) ;
+			}
+		}) ;
 	}
 }

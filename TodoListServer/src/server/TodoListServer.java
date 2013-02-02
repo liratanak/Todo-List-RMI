@@ -1,7 +1,6 @@
 package server;
 
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +62,10 @@ public class TodoListServer implements TodoListServerInterface {
 
 	@Override
 	public boolean deleteTodo(TodoItemInterface item, IClient source) throws RemoteException {
-		// TODO Auto-generated method stub
+		if(this.todoList.contains(item)){
+			this.todoList.remove(item);
+			return true;
+		}
 		return false;
 	}
 

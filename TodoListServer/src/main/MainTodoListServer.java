@@ -22,7 +22,9 @@ public class MainTodoListServer {
 			TodoListServerInterface server = new TodoListServer();
 
 			((TodoListServer) server).setTodoList(new ArrayList<TodoItemInterface>());
+			
 			((TodoListServer) server).getTodoList().add(((TodoItemInterface)(new TodoItem(1, 1, 2, "Title 1", "Object of title 1"))));
+			((TodoListServer) server).getTodoList().add(((TodoItemInterface)(new TodoItem(2, 1, 2, "Title 2", "Object of title 2"))));
 
 			String name = "TodoListServer";
 
