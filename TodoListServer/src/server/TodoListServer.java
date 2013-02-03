@@ -56,6 +56,13 @@ public class TodoListServer implements TodoListServerInterface {
 
 	@Override
 	public int updateTodo(TodoItemInterface item, IClient source) throws RemoteException {
+		System.out.println(item.getObject());
+		if(this.todoList.contains(item)){
+			this.todoList.set(this.todoList.indexOf(item), item);
+		}
+		
+		System.out.println(this.todoList.indexOf(item));
+//		this.todoList.get(this.todoList.indexOf(item)).getObject();
 		
 		for (IClient client : clientList) {
 			if(!source.equals(client)){

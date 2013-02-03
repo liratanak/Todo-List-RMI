@@ -33,8 +33,6 @@ public class MainTodoListClient {
 
 			MainTodoListClient.listTodoItems = MainTodoListClient.serverObject.getList(MainTodoListClient.client);
 			iniClientGui();
-
-			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {

@@ -29,7 +29,7 @@ public class MainTodoListServer {
 			String name = "TodoListServer";
 
 			TodoListServerInterface stub = (TodoListServerInterface) UnicastRemoteObject.exportObject(server, 0);
-			Registry registry = LocateRegistry.getRegistry();
+			Registry registry = LocateRegistry.getRegistry("localhost");
 			registry.rebind(name, stub);
 			
 			System.out.println("Todo List Server Started!");

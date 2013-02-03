@@ -26,6 +26,8 @@ public class SaveItemButton extends JButton implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
+			this.todoItemPanel.getTodoItem().setObject(this.todoItemPanel.getObjectTextArea().getText());
+			
 			MainTodoListClient.serverObject.updateTodo(this.todoItemPanel.getTodoItem(), MainTodoListClient.client);
 			this.setEnabled(false);
 			this.todoItemPanel.getEditButton().setText("Edit");
