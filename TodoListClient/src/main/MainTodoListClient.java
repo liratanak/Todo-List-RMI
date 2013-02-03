@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.SwingUtilities;
 
@@ -18,7 +19,7 @@ import pkinterface.TodoListServerInterface;
 
 public class MainTodoListClient {
 	
-	public static List<TodoItemInterface> listTodoItems;
+	public static Map<Integer, TodoItemInterface> listTodoItems;
 	public static TodoListServerInterface serverObject;
 	public static IClient client;
 
@@ -33,6 +34,7 @@ public class MainTodoListClient {
 
 			MainTodoListClient.listTodoItems = MainTodoListClient.serverObject.getList(MainTodoListClient.client);
 			iniClientGui();
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {

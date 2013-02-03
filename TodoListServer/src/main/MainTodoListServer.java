@@ -7,6 +7,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import pkinterface.TodoItemInterface;
 import pkinterface.TodoListServerInterface;
@@ -21,10 +22,10 @@ public class MainTodoListServer {
 			
 			TodoListServerInterface server = new TodoListServer();
 
-			((TodoListServer) server).setTodoList(new ArrayList<TodoItemInterface>());
+			((TodoListServer) server).setTodoList(new HashMap<Integer, TodoItemInterface>());
 			
-			((TodoListServer) server).getTodoList().add(((TodoItemInterface)(new TodoItem(1, 1, 2, "Title 1", "Object of title 1"))));
-			((TodoListServer) server).getTodoList().add(((TodoItemInterface)(new TodoItem(2, 1, 2, "Title 2", "Object of title 2"))));
+			((TodoListServer) server).getTodoList().put(1, ((TodoItemInterface)(new TodoItem(1, 1, 2, "Title 1", "Object of title 1"))));
+			((TodoListServer) server).getTodoList().put(2, ((TodoItemInterface)(new TodoItem(2, 1, 2, "Title 2", "Object of title 2"))));
 
 			String name = "TodoListServer";
 
