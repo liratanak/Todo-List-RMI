@@ -6,7 +6,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.SwingUtilities;
@@ -22,6 +21,7 @@ public class MainTodoListClient {
 	public static Map<Integer, TodoItemInterface> listTodoItems;
 	public static TodoListServerInterface serverObject;
 	public static IClient client;
+	public static TodoListMainFrame todoListMainFrame;
 
 	public static void main(String[] args) {
 		try {
@@ -64,7 +64,7 @@ public class MainTodoListClient {
 		SwingUtilities.invokeLater(new Runnable() {	
 			@Override
 			public void run() {
-				new TodoListMainFrame("Todo List", MainTodoListClient.listTodoItems) ;
+				MainTodoListClient.todoListMainFrame = new TodoListMainFrame("Todo List", MainTodoListClient.listTodoItems) ;
 			}
 		}) ;
 	}

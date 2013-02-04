@@ -1,5 +1,6 @@
 package gui.frame;
 
+import gui.button.RefreshItemButton;
 import gui.panel.TodoItemPanel;
 import gui.panel.TodoListMainPanel;
 
@@ -9,7 +10,6 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,25 +29,16 @@ public class TodoListMainFrame extends JFrame {
 	private Dimension frameSize = new Dimension(720, 640);
 	private JPanel mainPanel;
 	public static JButton refreshButton;
+	public List<TodoItemPanel> listTodoItemPanel;
 
 	public TodoListMainFrame(String title, Map<Integer, TodoItemInterface> listTodoItems) {
 		super(title);
-
+		this.listTodoItemPanel = new ArrayList<TodoItemPanel>();
 		this.setLayout(new BorderLayout());
 
-		List<TodoItemPanel> listTodoItemPanel = new ArrayList<TodoItemPanel>();
-
-		for (TodoItemInterface todoListItem : listTodoItems.values()) {
-			listTodoItemPanel.add(new TodoItemPanel(todoListItem));
-		}
-
-		this.mainPanel = new TodoListMainPanel(listTodoItemPanel);
-
-		this.add(mainPanel, BorderLayout.CENTER);
-
-		TodoListMainFrame.refreshButton = new JButton("Refresh");
+		TodoListMainFrame.refreshButton = new RefreshItemButton("Refresh");
 		this.add(TodoListMainFrame.refreshButton, BorderLayout.SOUTH);
-
+		this.initializeMainPanel(listTodoItems);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(frameSize);
 		this.setLocation(getMidPoint());
@@ -61,6 +52,17 @@ public class TodoListMainFrame extends JFrame {
 				}
 			};
 		});
+	}
+
+	public void initializeMainPanel(Map<Integer, TodoItemInterface> listTodoItems) {
+		this.mainPanel = null;
+		this.listTodoItemPanel = new ArrayList<>();
+		for (TodoItemInterface todoListItem : listTodoItems.values()) {
+			this.listTodoItemPanel.add(new TodoItemPanel(todoListItem));
+		}
+		
+		this.mainPanel = new TodoListMainPanel(this.listTodoItemPanel);
+		this.add(mainPanel, BorderLayout.CENTER);
 	}
 
 	private Point getMidPoint() {

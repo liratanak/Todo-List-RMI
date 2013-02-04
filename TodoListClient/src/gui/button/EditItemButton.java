@@ -33,14 +33,16 @@ public class EditItemButton extends JButton implements ActionListener {
 		if (this.beingEdited) {
 			this.todoItemPanel.getObjectTextArea().setEditable(false);
 			this.todoItemPanel.getObjectTextArea().setText(this.todoItemPanel.getTodoItem().getObject());
-			this.setText("Edit");
 			this.todoItemPanel.getSaveButton().setEnabled(false);
 			this.beingEdited = false;
+			
+			this.setText("Edit");
 		} else {
 			this.todoItemPanel.getObjectTextArea().setEditable(true);
 			this.todoItemPanel.getSaveButton().setEnabled(true);
-			this.setText("Cancel");
 			this.beingEdited = true;
+			
+			this.setText("Cancel");
 		}
 	}
 

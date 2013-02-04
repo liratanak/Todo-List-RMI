@@ -42,7 +42,7 @@ public class TodoListServer implements TodoListServerInterface {
 
 	@Override
 	public Map<Integer, TodoItemInterface> getList(IClient source) throws RemoteException {
-		if (clientList.contains(source)) {
+		if (this.clientList.contains(source)) {
 			return this.todoList;
 		}
 		this.clientList.add(source);
@@ -57,10 +57,9 @@ public class TodoListServer implements TodoListServerInterface {
 	}
 
 	@Override
-	public int updateTodo(TodoItemInterface item, IClient source) throws RemoteException {
-		System.out.println(item.getObject());
+	public int updateTodo(TodoItemInterface item, IClient source) throws RemoteException {		
+		this.todoList.get(item.getId()).setObject(item.getObject());
 
-		System.out.println(item.getId());
 		for (IClient client : clientList) {
 			if(!source.equals(client)){
 				client.notifyClient();
